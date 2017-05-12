@@ -12,16 +12,29 @@
     <div class="jumbotron">
       <h1>Assignment Tracker</h1>
     </div>
-    <div ng-controller="AssignmentController as AC">
+    <div ng-controller="AssignmentController as AC" >
       <!-- add ng-init getAssignments() -->
       <input placeholder="Assignment Name" ng-model='AC.assign_name'>
       <input placeholder="Student Name" ng-model='AC.stud_name'>
       <input placeholder="Score" ng-model='AC.score'>
       <input placeholder="Date Completed" ng-model='AC.date'>
       <button class='btn' ng-click='AC.addAssignment()' >Add Assignment</button>
+        <div class="container row">
+          <input placeholder="Search by Name" ng-model='AC.stud_name'>
+          <button class="btn" ng-click='AC.getAssn(AC.stud_name)'>Go</button>
 
+        </div>
+      <div class="container row" ng-init='AC.getAssignments()'>
+        <div ng-repeat='thing in AC.items' class="col-sm-3" >
+            <h4>{{thing.assign}}<h4>
+            <h4>{{thing.student}}<h4>
+            <h4>{{thing.score}}<h4>
+            <h4>{{thing.date}}<h4>
+            <button class="btn" ng-click='AC.deleteAssn(thing._id)' >Delete</button>
 
+        </div>
     </div>
+  </div>
 
   </body>
 </html>
